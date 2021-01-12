@@ -10,4 +10,4 @@ For example for some HomeBrew package:
 ./far2app/far2app.sh /usr/local/Cellar/HEAD-e97ad4d
 ```
 
-The **Far.app ** file will be created in current folder.
+The **Far.app** file will be created in current folder.
