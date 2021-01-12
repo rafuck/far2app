@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 APP=Far.app
-ROOT=$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )
+ROOT=$( cd "$(dirname "${0}")" >/dev/null 2>&1 ; pwd -P )
 
 if [ "$#" -ne 1 ]; then
     echo "App folder is not defined";
@@ -14,16 +14,16 @@ fi
 
 PACKAGE=$(cd ${1} && pwd)
 
-if [ ! -f $PACKAGE/bin/far2l ]; then
+if [ ! -f ${PACKAGE}/bin/far2l ]; then
 	echo "${1}/bin/far2l is not exists";
 	exit 1;
 fi
 
-test $APP && rm -rf $APP
-DIR=$APP/Contents/MacOS
-mkdir -p $DIR && cd $DIR
+test ${APP} && rm -rf ${APP}
+DIR=${APP}/Contents/MacOS
+mkdir -p ${DIR} && cd ${DIR}
 
-cp -r $PACKAGE/* ./
+cp -r ${PACKAGE}/* ./
 cat >Far <<EOL
 #!/usr/bin/env bash
 ROOT="\$( cd "\$(dirname "\$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -31,5 +31,4 @@ ROOT="\$( cd "\$(dirname "\$0")" >/dev/null 2>&1 ; pwd -P )"
 EOL
 chmod a+x Far
 
-cd ../
-cp -R ${ROOT}/Contents/* ./
+cp -R ${ROOT}/Contents/* ../
